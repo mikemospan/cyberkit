@@ -53,20 +53,44 @@
                 <br><br>
             </p>
             <h2>Is our metadata really harmless?</h2>
+            <h3>Browser and Operating System</h3>
             <p>
-                Well yes and no. While a lot of the information above is relatively harmless like your public IP address, even information that may not directly
-                reveal a lot about you can be used as a tool to obtain much more sensitive data. Take your cookies for example! Cookies are incredibly important
-                to security and privacy as they reveal everything about your activities on a website. Any sort of interaction you may perform is generally
-                recorded as a cookie. While a cookie can only be read by the website that created it for that very reason, hackers can still obtain them via
-                XSS attacks, network sniffing or even social engineering! Imagine someone else knowing every single post you liked and every interaction you have
-                ever had on a website. Not only can they now target their efforts more efficiently, but if they gain access to your session cookies they have
-                access to all your stored credentials. That can be quite catastrophic!
+                Well yes and no. For instance, take the first two entries which are your browser and operating system. While this may also seem like quite
+                harmless knowledge, this allows hackers to take advantage of known security flaws in such systems once they know exactly what you're using.
                 <br><br>
-                Another example is your browser and operating system. While this may also seem like quite harmless knowledge, this allows hackers to take advantage of
-                known security flaws in such systems once they know exactly what you're using! Furthermore, whilst the client IP address shown will most likely
-                be your localhost (i.e a loopback address), if you were to download and run the files of this website from GitHub it would display that as your host
-                IP address, and the client IP address would be your private network address. This would happen because you would become the host of the website,
-                which is why you should never install files from places you don't trust!
+            </p>
+            <h3>Language, Public IP and Timezone</h3>
+            <p>
+                On the other hand, the language, public IP address and even the timezone location fields despite looking possibly scary are fairly harmless!
+                While your timezone location and public IP address can help hackers craft more convincing phishing schemes, on their own they won't be able
+                to do much. Hackers are normally after digital information to be able to impersonate you online, so despite them knowing your country or city
+                might seem scary, there's not much to act on there.
+                <br><br>
+            </p>
+            <h3>Referrer</h3>
+            <p>
+                The referrer is a fairly interesting piece of metadata that tells the website exactly what other website you came from. Importantly, this
+                only works if you are loading a https website from a https website or a http website from a http website. For security reasons, modern
+                browsers will block referrer information if you load between http and https websites! Using referrers, hackers can discover exactly
+                what website you most recently visited which they can use to track or potentially steal your information.
+                <br><br>
+            </p>
+            <h3>Cookies</h3>
+            <p>
+                Cookies are incredibly important to security and privacy as they reveal everything about your activities on a website. Any sort of interaction
+                you may perform is generally recorded as a cookie. While a cookie can only be read by the website that created it for that very reason,
+                hackers can still obtain them via XSS attacks, network sniffing or even social engineering! Imagine someone else knowing every single post you
+                liked and every interaction you have ever had on a website. Not only can they now target their efforts more efficiently, but if they gain access
+                to your session cookies they have access to your entire account on that website. That can be quite catastrophic especially if it was your bank
+                account!
+                <br><br>
+            </p>
+            <h3>Host and Client IP Addresses</h3>
+            <p>
+                The host IP address is the IP address of the server that hosts the website, whilst the client IP address is the address that 
+                Whilst the client IP address shown will most likely be your localhost (i.e a loopback address), if you were to download and run the files of this
+                website from GitHub it would display that as your host IP address, and the client IP address would be your private network address. This would
+                happen because you would become the host of the website, which is why you should never install files from places you don't trust!
                 <br><br>
             </p>
             <h2>How can we stay safe?</h2>
@@ -76,6 +100,7 @@
                 All our files such as photos taken from our phone include metadata such as the location these photos were taken in. Whenever you upload a photo,
                 try to strip all its metadata first, as uploading it carelessly can give people a lot of information about you! Not all websites like OpenLearning
                 do this automatically.
+                <br><br>
             </p>
         </div>
 

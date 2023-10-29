@@ -26,13 +26,13 @@
                 the same guidelines. Click "Start Logging" below for text to appear in the textbox. Once you're done feel
                 free to click "Stop Logging" and start again!
             </p>
-            <button id="startButton" class="startButton">Start Logging</button>
-            <button id="stopButton" class="stopButton">Stop Logging</button>
+            <button id="startButton" class="startButton" onmousedown="startLog()">Start Logging</button>
+            <button id="stopButton" class="stopButton" onmousedown="stopLog()">Stop Logging</button>
             <div id="logbox" class="logbox"><div id="keylog" class="keylog"></div></div>
             <h2>How can we stay safe?</h2>
             <p>
                 As hinted at before, a lot of antiviruses can detect common keyloggers! While not all antiviruses offer services
-                for web applications, some like Malwarebytes offer browswer extensions to search for malware. Far from every
+                for web applications, some like Malwarebytes offer browser extensions to search for malware. Far from every
                 keylogger can be detected however. This one in particular is also hard to detect since it's not malicious!
                 This means the data gathered from you is not being sent over the internet anywhere which is what most
                 antiviruses and firewalls search for.
@@ -45,7 +45,7 @@
                 have rootkit functionality, where the rootkit (such as this one) deliberately hides the application, making it almost
                 impossible to detect! Below is a GitHub link to a simple keylogger coded up as a part of this project.
             </p>
-            <p style="text-align: center;"><a href="/">Keylogger GitHub Repository</a></p>
+            <p style="text-align: center;"><a href="https://github.com/mikemospan/keylogger">Keylogger GitHub Repository</a></p>
         </div>
 
         <script>
@@ -54,17 +54,17 @@
             const log = document.getElementById('keylog');
             let logText = '';
             let isLogging = false;
-    
-            startButton.addEventListener('click', function () {
+
+            function startLog() {
                 logText = '';
                 log.innerHTML = 'Logging started...';
                 isLogging = true;
-            });
-    
-            stopButton.addEventListener('click', function () {
+            }
+
+            function stopLog() {
                 log.innerHTML = 'Logging stopped.';
                 isLogging = false;
-            });
+            }
     
             document.addEventListener('keydown', function (event) {
                 if (isLogging) {

