@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(background.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+@font-face {
+    font-family: 'Lato-Bold';
+    src: url(Lato/Lato-Bold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Cyber';
+    src: url(sd-cyber-glitch-font/Demosdcyberglitch-yw6GM.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro Semibold';
+    src: url(source-sans-pro/SourceSansPro-Semibold.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url(source-sans-pro/SourceSansPro-Regular.otf) format('opentype');
+}
+
+.navbar {
+    width: 80%;
+    margin: auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navtext {
+    font-family: 'Lato-Bold';
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.logo {
+    width: 120px;
+    font-family: 'Cyber';
+    color: #e49400;
+    font-size: 112px;
+}
+
+.navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.navbar ul li::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #e27900;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+
+.navbar ul li:hover::after {
+    width: 100%;
+}
+
+.textbox {
+    width: 1200px;
+    height: 700px;
+    background: rgba(10, 10, 10, 0.8); 
+    display: flex;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 58%;
+    left: 50%;
+    color: white;
+    border-radius: 15px;
+    flex-direction: column;
+}
+
+.textbox h1 {
+    text-align: center;
+    font-family: 'Source Sans Pro Semibold';
+    font-size: 38px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.textbox p {
+    font-family: 'Source Sans Pro';
+    margin-left: 55px;
+    margin-right: 55px;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.sunset {
+    width: 90%;
+    height: 20vh;
+    background-image: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)),url(very-bright-orange-sunset-with-streaky-clouds\(3\).png);
+    transform: translate(5%, 0%);
+    background-size: cover;
+    background-position: center;
+    display: block;
+    opacity: 0.9;
+}
+
+a {
+    color: #e49400;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+input[type=checkbox] {
+    margin-left: 25px;
+    -ms-transform: scale(1.15);
+    -moz-transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+    -o-transform: scale(1.15);
+    transform: scale(1.15);
+    padding: 1px;
+}
+
+input[type=button] {
+    margin-top: 10px;
+    margin-left: 55px;
+}
+
+.counter {
+    font-family: 'Source Sans Pro';
+    margin-left: 55px;
+    margin-right: 55px;
+    margin-top: 5px;
+    font-size: 18px;
+}

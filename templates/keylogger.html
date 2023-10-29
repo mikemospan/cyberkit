@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CyberKit</title>
+        <link rel="stylesheet" href = "../static/keylogger.css">
+    </head>
+    <body>
+        <div class="banner">
+            <div class="navbar">
+                <h1 class="logo">Cyberkit</h1>
+                <ul>
+                    <li class = "navtext"><a href="/">Home</a></li>
+                    <li class = "navtext"><a href="/keylogger">Keylogger</a></li>
+                    <li class = "navtext"><a href="/metadata">Metadata Sniffer</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="textbox">
+            <h1>Keylogger Simulation</h1>
+            <p>Welcome to the website's built-in keylogger! Did you know that websites can track your keystrokes whenever
+                you're on them? This may be your email, password, credit card details and so much more. For this to work
+                you may need to disable your antivirus/firewall (Hint for staying safe!).
+                <br><br>
+                While this keylogger requires you to start and stop it for ethical reasons, obviously not all websites follow
+                the same guidelines. Click "Start Logging" below for text to appear in the textbox. Once you're done feel
+                free to click "Stop Logging" and start again!
+            </p>
+            <button id="startButton" class="startButton">Start Logging</button>
+            <button id="stopButton" class="stopButton">Stop Logging</button>
+            <div id="logbox" class="logbox"><div id="keylog" class="keylog"></div></div>
+            <h2>How can we stay safe?</h2>
+            <p>
+                As hinted at before, a lot of antiviruses can detect common keyloggers! While not all antiviruses offer services
+                for web applications, some like Malwarebytes offer browswer extensions to search for malware. Far from every
+                keylogger can be detected however. This one in particular is also hard to detect since it's not malicious!
+                This means the data gathered from you is not being sent over the internet anywhere which is what most
+                antiviruses and firewalls search for.
+                <br><br>
+            </p>
+            <h2>Other types of keyloggers!</h2>
+            <p>
+                Online keyloggers like this one which log your key strokes whenever you visit the website are far from the only types
+                of keyloggers. Other downloadable types of keyloggers are arguably far more malicious. This is because many keyloggers
+                have rootkit functionality, where the rootkit (such as this one) deliberately hides the application, making it almost
+                impossible to detect! Below is a GitHub link to a simple keylogger coded up as a part of this project.
+            </p>
+            <p style="text-align: center;"><a href="/">Keylogger GitHub Repository</a></p>
+        </div>
+
+        <script>
+            const startButton = document.getElementById('startButton');
+            const stopButton = document.getElementById('stopButton');
+            const log = document.getElementById('keylog');
+            let logText = '';
+            let isLogging = false;
+    
+            startButton.addEventListener('click', function () {
+                logText = '';
+                log.innerHTML = 'Logging started...';
+                isLogging = true;
+            });
+    
+            stopButton.addEventListener('click', function () {
+                log.innerHTML = 'Logging stopped.';
+                isLogging = false;
+            });
+    
+            document.addEventListener('keydown', function (event) {
+                if (isLogging) {
+                    const key = event.key;
+                    logText += key;
+                    log.innerHTML = logText;
+
+                    const logbox = document.getElementById('logbox');
+                    logbox.scrollTop = logbox.scrollHeight - logbox.clientHeight;
+                }
+            });
+        </script>
+    </body>
+</html>

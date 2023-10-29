@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CyberKit</title>
+        <link rel="stylesheet" href = "../static/metadata.css">
+    </head>
+    <body>
+        <div class="banner">
+            <div class="navbar">
+                <h1 class="logo">Cyberkit</h1>
+                <ul>
+                    <li class = "navtext"><a href="/">Home</a></li>
+                    <li class = "navtext"><a href="/keylogger">Keylogger</a></li>
+                    <li class = "navtext"><a href="/metadata">Metadata Sniffer</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="textbox">
+            <h1>Metadata Sniffer</h1>
+            <table>
+                <tr class="titles">
+                    <th>Browser</th>
+                    <th>Operating System</th>
+                    <th>Language</th>
+                    <th>Timezone Location</th>
+                    <th>Referrer</th>
+                    <th>Cookies</th>
+                    <th>Host Name</th>
+                    <th>Host IP Address</th>
+                    <th>Client IP Address</th>
+                    <th>Your Public IP Address</th>
+                </tr>
+
+                <tr class="body">
+                    <td id="browser"></td>
+                    <td id="os"></td>
+                    <td id="language"></td>
+                    <td id="timezone"></td>
+                    <td id="referrer"></td>
+                    <td id="cookies"></td>
+                    <td id="hname"></td>
+                    <td id="hip"></td>
+                    <td id="cip"></td>
+                    <td id="pip"></td>
+                </tr>
+            </table>
+            <p>
+                Above is a table with just some of the metadata that can be collected from you, purely by visiting a website. But what really is metadata?
+                Well metadata is a type of data that provides information about other data! It can be the timestamp of a message, location taken of an image,
+                or even the cookies that get sent on a website. But why is metadata important to hackers and how can it be used? Surely the information that
+                was extracted from you in the table is harmless?
+                <br><br>
+            </p>
+            <h2>Is our metadata really harmless?</h2>
+            <p>
+                Well yes and no. While a lot of the information above is relatively harmless like your public IP address, even information that may not directly
+                reveal a lot about you can be used as a tool to obtain much more sensitive data. Take your cookies for example! Cookies are incredibly important
+                to security and privacy as they reveal everything about your activities on a website. Any sort of interaction you may perform is generally
+                recorded as a cookie. While a cookie can only be read by the website that created it for that very reason, hackers can still obtain them via
+                XSS attacks, network sniffing or even social engineering! Imagine someone else knowing every single post you liked and every interaction you have
+                ever had on a website. Not only can they now target their efforts more efficiently, but if they gain access to your session cookies they have
+                access to all your stored credentials. That can be quite catastrophic!
+                <br><br>
+                Another example is your browser and operating system. While this may also seem like quite harmless knowledge, this allows hackers to take advantage of
+                known security flaws in such systems once they know exactly what you're using! Furthermore, whilst the client IP address shown will most likely
+                be your localhost (i.e a loopback address), if you were to download and run the files of this website from GitHub it would display that as your host
+                IP address, and the client IP address would be your private network address. This would happen because you would become the host of the website,
+                which is why you should never install files from places you don't trust!
+                <br><br>
+            </p>
+            <h2>How can we stay safe?</h2>
+            <p>
+                While it's impossible to hide all metadata associated to you, there are a number of ways you can minimise how much others know about you.
+                A few ways to do this is to use a VPN, accept the least number of cookies you can, and erase any metadata from a file before you upload it.
+                All our files such as photos taken from our phone include metadata such as the location these photos were taken in. Whenever you upload a photo,
+                try to strip all its metadata first, as uploading it carelessly can give people a lot of information about you! Not all websites like OpenLearning
+                do this automatically.
+            </p>
+        </div>
+
+        <script>
+            const browser = document.getElementById("browser");
+            const broswerText = navigator.userAgent.replace(/ *\([^)]*\) */g, "");
+            browser.innerHTML = broswerText;
+
+            const os = document.getElementById("os");
+            const osText = navigator.userAgent.match(/\(([^)]+)\)/)[1];
+            os.innerHTML = osText;
+
+            const language = document.getElementById("language");
+            language.innerHTML = navigator.language;
+
+            const timezone = document.getElementById("timezone");
+            timezone.innerHTML = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+            const referrer = document.getElementById("referrer");
+            referrer.innerHTML = "{{ referrer }}";
+
+            const cookies = document.getElementById("cookies");
+            cookies.innerHTML = document.cookie;
+
+            const hostName = document.getElementById("hname");
+            hostName.innerHTML = "{{ hostName }}";
+
+            const hostIp = document.getElementById("hip");
+            hostIp.innerHTML = "{{ hostIp }}";
+
+            const clientIp = document.getElementById("cip");
+            clientIp.innerHTML = "{{ clientIp }}";
+
+            const publicIp = document.getElementById("pip");
+            publicIp.innerHTML = "{{ publicIp }}";
+        </script>
+    </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CyberKit</title>
+        <link rel="stylesheet" href = "../static/index.css">
+    </head>
+    <body>
+        <div class="banner">
+            <div class="navbar">
+                <h1 class="logo">Cyberkit</h1>
+                <ul>
+                    <li class = "navtext"><a href="/">Home</a></li>
+                    <li class = "navtext"><a onclick="consentedKeylogger()">Keylogger</a></li>
+                    <li class = "navtext"><a onclick="consentedMetadata()">Metadata Sniffer</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="textbox">
+            <h1>Welcome to my Rootkit!</h1>
+            <div class="sunset"></div>
+            <p>
+                "But what is a rootkit?" I hear you asking. A rootkit is simply a collection of software tools that can enable
+                a user to gain unauthorised control of some computer system. This is an online rootkit built for education
+                purposes as a way to teach people the importance of cyber security!
+                <br><br>
+                Each tool that is built into this kit will explain exactly how it works and ways to stay safe. As we dive
+                into all its individual components, you will also learn the type of information that can be extracted from you,
+                and what the hacker needs to be able to do this! While all of these tools will be used on you, <b>none of the
+                information that is obtained will be stored anywhere</b>. This website is completely open-source with the GitHub
+                repository provided to you below.
+            </p>
+            <p style="text-align: center;"><a href="/">CyberKit GitHub Repository</a></p>
+            <p>
+                And with that, let's get started! Please check the box below if you consent to me echoing your information back to you.
+                <form id="consentForm">
+                    <p>
+                        <input type="checkbox" id="consentCheckbox" required>
+                        <label for="consentCheckbox"> <span style="color: rgb(255, 82, 82);">*</span> I consent to the collection of my data.</label>
+                    </p>
+        
+                    <input type="button" value="Consent" onclick="onClick()" style="font-size: 17px; padding: 2px 3px; font-family: 'Source Sans Pro';">
+                </form>
+
+                <p id="welcome" style="display: none;">Welcome to the CyberKit, hope you enjoy your stay! Below is the number of people
+                that have consented and learnt from this website, just like you!</p>
+                <div id="counter" class="counter" style="display: none;"></div>
+            </p>
+        </div>
+
+        <script>
+            function createCookie(name, value, days) {
+                var expires = '',
+                    date = new Date();
+                if (days) {
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = '; expires=' + date.toGMTString();
+                }
+                document.cookie = name + '=' + value + expires + '; path=/';
+            }
+            
+            function readCookie(name) {
+                var nameEQ = name + '=',
+                    allCookies = document.cookie.split(';'),
+                    i,
+                    cookie;
+                for (i = 0; i < allCookies.length; i++) {
+                    cookie = allCookies[i];
+                    while (cookie.charAt(0) === ' ') {
+                        cookie = cookie.substring(1, cookie.length);
+                    }
+                    if (cookie.indexOf(nameEQ) === 0) {
+                        return cookie.substring(nameEQ.length, cookie.length);
+                    }
+                }
+                return null;
+            }
+
+            if (readCookie('consent') === 'true') {
+                const counterElement = document.getElementById('counter');
+                fetch('/get_counter', { method: 'GET' }).then(response => response.json()).then(data => {
+                    counterElement.innerHTML = 'Counter: ' + data.counter + ' &#129395';
+                });
+                document.getElementById("welcome").style.display = "block";
+                document.getElementById("counter").style.display = "block";
+            }
+            
+            function onClick() {
+                if (readCookie('consent') === 'true') {
+                    alert("You can only consent once!");
+                } else {
+                    const counterElement = document.getElementById('counter');
+                    fetch('/increment', { method: 'POST' }).then(response => response.json()).then(data => {
+                        counterElement.innerHTML = 'Counter: ' + data.counter + ' &#129395';
+                    });
+
+                    document.cookie = createCookie('consent', 'true');
+                    document.getElementById("welcome").style.display = "block";
+                    document.getElementById("counter").style.display = "block";
+                    const button = document.getElementById("button");
+                }
+            }
+
+            function consentedKeylogger() {
+                if (readCookie('consent') !== 'true') {
+                    alert("You must consent before clicking!");
+                } else {
+                    window.location.replace("/keylogger");
+                }
+            }
+
+            function consentedMetadata() {
+                if (readCookie('consent') !== 'true') {
+                    alert("You must consent before clicking!");
+                } else {
+                    window.location.replace("/metadata");
+                }
+            }
+        </script>
+    </body>
+</html>
