@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <title>CyberKit</title>
         <link rel="stylesheet" href = "../static/metadata.css">
     </head>
     <body>
-        <div class="banner">
+        <body style="background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(../static/background.jpg); background-size: cover;">
             <div class="navbar">
                 <h1 class="logo">Cyberkit</h1>
                 <ul>
                     <li class = "navtext"><a href="/">Home</a></li>
-                    <li class = "navtext"><a href="/keylogger">Keylogger</a></li>
+                    <li class = "navtext"><a onclick="clickKeylogger()">Keylogger</a></li>
                     <li class = "navtext"><a href="/metadata">Metadata Sniffer</a></li>
+                    <li class = "navtext"><a href="/xss">XSS Attacks</a></li>
+                    <li class = "navtext"><a href="/consent">Consent Bypass</a></li>
                 </ul>
             </div>
         </div>
@@ -27,9 +30,8 @@
                     <th>Referrer</th>
                     <th>Cookies</th>
                     <th>Host Name</th>
-                    <th>Host IP Address</th>
-                    <th>Client IP Address</th>
-                    <th>Your Public IP Address</th>
+                    <th>Host Public IP Address</th>
+                    <th>Client Public IP Address</th>
                 </tr>
 
                 <tr class="body">
@@ -40,9 +42,8 @@
                     <td id="referrer"></td>
                     <td id="cookies"></td>
                     <td id="hname"></td>
-                    <td id="hip"></td>
-                    <td id="cip"></td>
                     <td id="pip"></td>
+                    <td id="cip"></td>
                 </tr>
             </table>
             <p>
@@ -59,10 +60,10 @@
                 harmless knowledge, this allows hackers to take advantage of known security flaws in such systems once they know exactly what you're using.
                 <br><br>
             </p>
-            <h3>Language, Public IP and Timezone</h3>
+            <h3>Language and Timezone</h3>
             <p>
-                On the other hand, the language, public IP address and even the timezone location fields despite looking possibly scary are fairly harmless!
-                While your timezone location and public IP address can help hackers craft more convincing phishing schemes, on their own they won't be able
+                On the other hand, the language and even the timezone location fields despite looking possibly scary are fairly harmless!
+                While your language and timezone location can help hackers craft more convincing phishing schemes, on their own they won't be able
                 to do much. Hackers are normally after digital information to be able to impersonate you online, so despite them knowing your country or city
                 might seem scary, there's not much to act on there.
                 <br><br>
@@ -82,15 +83,15 @@
                 hackers can still obtain them via XSS attacks, network sniffing or even social engineering! Imagine someone else knowing every single post you
                 liked and every interaction you have ever had on a website. Not only can they now target their efforts more efficiently, but if they gain access
                 to your session cookies they have access to your entire account on that website. That can be quite catastrophic especially if it was your bank
-                account!
+                account! You can check all the cookies a website has on you via inspect element and going to the "Storage" section.
                 <br><br>
             </p>
-            <h3>Host and Client IP Addresses</h3>
+            <h3>Public IP Addresses</h3>
             <p>
-                The host IP address is the IP address of the server that hosts the website, whilst the client IP address is the address that 
-                Whilst the client IP address shown will most likely be your localhost (i.e a loopback address), if you were to download and run the files of this
-                website from GitHub it would display that as your host IP address, and the client IP address would be your private network address. This would
-                happen because you would become the host of the website, which is why you should never install files from places you don't trust!
+                While none of the IP addresses that were fetched using this website are particularly harmful, they still pose a potential threat. Your public
+                IP address stores basic geolocation data and can even be tracked down to the ISP you use. Furthermore, despite this IP address being "public"
+                it is not common knowledge and a website needs to manually extract it to receive it. Using this IP address, hackers can even make a DDOS attack
+                on you! While this is potentially dangerous, the risk is incredibly low as there are many protections against this nowadays.
                 <br><br>
             </p>
             <h2>How can we stay safe?</h2>
@@ -128,14 +129,19 @@
             const hostName = document.getElementById("hname");
             hostName.innerHTML = "{{ hostName }}";
 
-            const hostIp = document.getElementById("hip");
+            const hostIp = document.getElementById("pip");
             hostIp.innerHTML = "{{ hostIp }}";
 
             const clientIp = document.getElementById("cip");
             clientIp.innerHTML = "{{ clientIp }}";
 
-            const publicIp = document.getElementById("pip");
-            publicIp.innerHTML = "{{ publicIp }}";
+            function clickKeylogger() {
+                if (window.innerWidth <= 428) {
+                    alert("The keylogger isn't accessible on phone!");
+                } else {
+                    window.location.href = "/keylogger";
+                }
+            }
         </script>
     </body>
 </html>

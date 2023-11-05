@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <title>CyberKit</title>
         <link rel="stylesheet" href = "../static/index.css">
     </head>
-    <body>
-        <div class="banner">
-            <div class="navbar">
-                <h1 class="logo">Cyberkit</h1>
-                <ul>
-                    <li class = "navtext"><a href="/">Home</a></li>
-                    <li class = "navtext"><a onclick="consentedKeylogger()">Keylogger</a></li>
-                    <li class = "navtext"><a onclick="consentedMetadata()">Metadata Sniffer</a></li>
-                </ul>
-            </div>
+    <body style="background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(../static/background.jpg); background-size: cover;">
+        <div class="navbar">
+            <h1 class="logo">Cyberkit</h1>
+            <ul>
+                <li class = "navtext"><a href="/">Home</a></li>
+                <li class = "navtext"><a onclick="consentedKeylogger()">Keylogger</a></li>
+                <li class = "navtext"><a onclick="consentedMetadata()">Metadata Sniffer</a></li>
+                <li class = "navtext"><a onclick="consentedXSS()">XSS Attacks</a></li>
+                <li class = "navtext"><a onclick="consentedConsent()">Consent Bypass</a></li>
+            </ul>
         </div>
 
         <div class="textbox">
-            <h1>Welcome to my Rootkit!</h1>
-            <div class="sunset"></div>
+            <h1>Welcome to my CyberKit!</h1>
+            <img src="../static/very-bright-orange-sunset-with-streaky-clouds(3).png" class="sunset"/>
             <p>
-                "But what is a rootkit?" I hear you asking. A rootkit is simply a collection of software tools that can enable
-                a user to gain unauthorised control of some computer system. This is an online rootkit built for education
-                purposes as a way to teach people the importance of cyber security!
-                <br><br>
-                Each tool that is built into this kit will explain exactly how it works and ways to stay safe. As we dive
+                CyberKit is meant to be a website that teaches security concepts! It contains a number of tools and techniques that hackers
+                might use to gain access to a system with the purpose of demonstrating the importance of cyber security. <br><br>
+                Each tool or technique that is built into this kit will explain exactly how it works and ways to stay safe. As we dive
                 into all its individual components, you will also learn the type of information that can be extracted from you,
                 and what the hacker needs to be able to do this! While all of these tools will be used on you, <b>none of the
                 information that is obtained will be stored anywhere</b>. This website is completely open-source with the GitHub
                 repository provided to you below.
             </p>
-            <p style="text-align: center;"><a href="https://github.com/mikemospan/cyberkit">CyberKit GitHub Repository</a></p>
+            <p style="text-align: center;"><a href="">CyberKit GitHub Repository (TODO)</a></p>
             <p>
                 And with that, let's get started! Please check the box below if you consent to me echoing your information back to you.
-                <form id="consentForm">
+                <br>
+                As an added hacking challenge, can you try access the other pages without clicking consent? Hint: Inspect element is your
+                best friend!
+                <form id="consentForm" action="javascript:onSubmit()">
                     <p>
                         <input type="checkbox" id="consentCheckbox" required>
                         <label for="consentCheckbox"> <span style="color: rgb(255, 82, 82);">*</span> I consent to the collection of my data.</label>
                     </p>
-        
-                    <input type="button" value="Consent" onclick="onClick()" style="font-size: 17px; padding: 2px 3px; font-family: 'Source Sans Pro';">
+
+                    <input type="submit" value="Consent" style="font-size: 17px; padding: 2px 3px; font-family: 'Source Sans Pro';">
                 </form>
 
                 <p id="welcome" style="display: none;">Welcome to the CyberKit, hope you enjoy your stay! Below is the number of people
@@ -58,7 +60,7 @@
                 }
                 document.cookie = name + '=' + value + expires + '; path=/';
             }
-            
+
             function readCookie(name) {
                 var nameEQ = name + '=',
                     allCookies = document.cookie.split(';'),
@@ -84,8 +86,8 @@
                 document.getElementById("welcome").style.display = "block";
                 document.getElementById("counter").style.display = "block";
             }
-            
-            function onClick() {
+
+            function onSubmit() {
                 if (readCookie('consent') === 'true') {
                     alert("You can only consent once!");
                 } else {
@@ -104,8 +106,10 @@
             function consentedKeylogger() {
                 if (readCookie('consent') !== 'true') {
                     alert("You must consent before clicking!");
+                } else if (window.innerWidth <= 428) {
+                    alert("The keylogger isn't accessible on phone!");
                 } else {
-                    window.location.replace("/keylogger");
+                    window.location.href = "/keylogger";
                 }
             }
 
@@ -113,7 +117,23 @@
                 if (readCookie('consent') !== 'true') {
                     alert("You must consent before clicking!");
                 } else {
-                    window.location.replace("/metadata");
+                    window.location.href = "/metadata";
+                }
+            }
+
+            function consentedXSS() {
+                if (readCookie('consent') !== 'true') {
+                    alert("You must consent before clicking!");
+                } else {
+                    window.location.href = "/xss";
+                }
+            }
+
+            function consentedConsent() {
+                if (readCookie('consent') !== 'true') {
+                    alert("You must consent before clicking!");
+                } else {
+                    window.location.href = "/consent";
                 }
             }
         </script>

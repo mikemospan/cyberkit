@@ -43,6 +43,7 @@
 .navtext {
     font-family: 'Lato-Bold';
     font-size: 22px;
+    cursor: pointer;
 }
 
 .logo {
@@ -80,14 +81,8 @@
     width: 100%;
 }
 
-a {
-    color: #e49400;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
 .textbox {
-    width: 1300px;
+    width: 1800px;
     height: 710px;
     background: rgba(10, 10, 10, 0.8);
     display: flex;
@@ -98,13 +93,35 @@ a {
     color: white;
     border-radius: 15px;
     flex-direction: column;
+    word-wrap: break-word;
+    overflow-y: scroll;
+}
+
+.night {
+    width: 90%;
+    height: 16vh;
+    transform: translate(5%, 0%);
+    background-size: cover;
+    background-position: center;
+    display: block;
+    opacity: 0.9;
+}
+
+.xss {
+    width: 80%;
+    height: 15vh;
+    transform: translate(13%, 0%);
+    background-size: cover;
+    background-position: center;
+    display: block;
+    opacity: 0.9;
 }
 
 .textbox h1 {
     text-align: center;
     font-family: 'Source Sans Pro Semibold';
     font-size: 38px;
-    margin-top: 10px;
+    margin-top: 15px;
     margin-bottom: 20px;
 }
 
@@ -119,56 +136,70 @@ a {
     font-family: 'Source Sans Pro';
     margin-left: 55px;
     margin-right: 55px;
-    margin-top: 5px;
-    font-size: 18px;
-}
-
-.startButton {
-    font-family: 'Source Sans Pro Semibold';
-    font-size: 18px;
     margin-top: 15px;
-    margin-left: 55px;
-    margin-right: 55px;
-    background-color: rgb(190, 255, 94);
-    border-color: rgb(190, 255, 94);
-    width: 20%;
-    align-self: center;
-}
-
-.stopButton {
-    font-family: 'Source Sans Pro Semibold';
     font-size: 18px;
-    margin-top: 10px;
-    margin-left: 55px;
-    margin-right: 55px;
-    background-color: rgb(255, 87, 87);
-    border-color: rgb(255, 87, 87);
-    width: 20%;
-    align-self: center;
 }
 
-.logbox {
-    width: 1100px;
-    height: 10vh;
-    background: rgba(77, 77, 77, 0.7);
-    display: block;
-    position: relative;
-    margin-left: 55px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    transform: translate(3%, 0%);
-    color: white;
-    border-radius: 15px;
-    word-wrap: break-word;
-    overflow-y: scroll;
+.meme {
+    width: 60%;
+    height: 50%;
+    background-image: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)),url(main-qimg-d8d51f42228f22624234213633afa96b-lq.jpg);
+    transform: translate(5%, 0%);
     background-size: cover;
     background-position: center;
+    display: block;
+    opacity: 0.9;
 }
 
-.keylog {
-    font-family: 'Source Sans Pro';
-    font-size: 18px;
-    margin-top: 5px;
-    margin-left: 10px;
-    margin-right: 10px;
+@media (max-width: 428px) {
+    .logo {
+        width: 8vh;
+        font-size: 64px;
+        display: block;
+        transform: translate(70%, 0%);
+    }
+
+    .banner {
+        height: 205vh;
+    }
+
+    .navbar {
+        width: 50vh;
+        margin: auto;
+        padding: 2.7vh 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navbar ul li {
+        margin: 0 0.5vh;
+        transform: translate(0%, 250%);
+        left: -13%;
+    }
+
+    .navtext {
+        font-size: 18px;
+    }
+
+    .textbox {
+        width: 50vh;
+        height: 132vh;
+        transform: translate(-50%, -50%);
+        top: 96%;
+        left: 50%;
+        border-radius: 1.6vh;
+        margin-bottom: 5vh;
+        margin-top: 1vh;
+    }
+
+    .textbox p {
+        margin-left: 2vh;
+        margin-right: 2vh;
+        margin-top: 1.6vh;
+    }
+
+    .navbar ul li:hover::after {
+        width: 0%;
+    }
 }

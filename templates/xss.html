@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CyberKit</title>
+        <link rel="stylesheet" href = "../static/xss.css">
+    </head>
+    <body style="background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(../static/background.jpg); background-size: cover;">
+        <div class="banner">
+            <div class="navbar">
+                <h1 class="logo">Cyberkit</h1>
+                <ul>
+                    <li class = "navtext"><a href="/">Home</a></li>
+                    <li class = "navtext"><a onclick="clickKeylogger()">Keylogger</a></li>
+                    <li class = "navtext"><a href="/metadata">Metadata Sniffer</a></li>
+                    <li class = "navtext"><a href="/xss">XSS Attacks</a></li>
+                    <li class = "navtext"><a href="/consent">Consent Bypass</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="textbox">
+            <h1>Think like an attacker!</h1>
+            <img src="../static/sublime-purple-night-sky-unsplash-b1747a-1024.jpg" class="night"/>
+            <p>
+                In this page we introduce a new fun concept called XSS attacks. We will cover exactly how to do them, why they're dangerous
+                and how we can build our websites to be safe from them. You will of course get to perform your own XSS attack on this
+                website at the very end!
+                <br><br>
+            </p>
+            <h2>What is an XSS Attack?</h2>
+            <p>
+                XSS stands for cross-site scripting and is a type of security vulnerability that can be found in some web applications.
+                They enable attackers to inject client side scripts into web pages. Although these changes only affect their viewing of
+                the website, not the websites code for everyone, it allows them to run their own code to change to pages they shouldn't
+                have access to, gain access to unauthorised accounts and much more.
+                Most commonly, JavaScript code is injected into the frontend where the user is meant to give the website their input!
+                <br><br>
+            </p>
+            <h2>What makes a website vulnerable to XSS and how can we avoid it?</h2>
+            <p>
+                A web page is vulnerable to XSS if it doesn't check its user input. One good example is the use of "innerHTML" to take user
+                input and convert it into HTML code. This means that if we passed in some malicious JavaScript code the website would run it!
+                Whenever we take in any form of user input we always want to check it with HTML and JavaScript encoding, otherwise someone
+                could inject code to access areas and accounts they aren't meant to.
+                <br><br>
+            </p>
+            <h2>Attack the Attacker!</h2>
+            <p>
+                The keylogger is meant to be a cheeky page which demonstrates that it can see everything you type into the website, even
+                if you're not typing into a textbox! However, there is one fatal flaw in its code that we recently discussed...<br>
+                It's using innerHTML without any sanitisation checks or encoding. That means theoretically we should be able to inject
+                JavaScript code into this website's frontend! Let's check if that's the case by typing a simple alert:
+                <b>&lt;script&gt;alert(1);&lt;\script&gt;&nbsp;</b> &emsp; ... hmm that didn't seem to work, but notice how as soon as we
+                close the first script tag the text disappears?<br><br>
+                Our code is definitely being injected, but for some reason we don't see the alert. This is because a lot of modern browsers
+                check for script tags to execute only when a page is loaded, so putting one in later doesn't do anything for security reasons.
+                There are ways around it however, instead of using the script tag to do our alert, let's execute our code through a "onerror"
+                which gets ran if something fails to load.
+                <br><br>
+            </p>
+            <img src="../static/keyloggerxss.PNG" class="xss"/>
+            <p>
+                Let's use a simple image tag which loads the image from an undefined source "x". This is means
+                <b>&lt;img src="x" onerror="alert(1)"&gt;</b> is guaranteed to trigger the alert! Go and have fun XSS'ing!
+                <br><br>
+            </p>
+        </div>
+
+        <script>
+            function clickKeylogger() {
+                if (window.innerWidth <= 428) {
+                    alert("The keylogger isn't accessible on phone!");
+                } else {
+                    window.location.href = "/keylogger";
+                }
+            }
+        </script>
+    </body>
+</html>

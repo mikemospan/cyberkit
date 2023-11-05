@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CyberKit</title>
+        <link rel="stylesheet" href = "../static/aurora.css">
+    </head>
+    <body style="background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(../static/background.jpg); background-size: cover;">
+        <div class="banner">
+            <div class="navbar">
+                <h1 class="logo">Cyberkit</h1>
+                <ul>
+                    <li class = "navtext"><a href="/">Home</a></li>
+                    <li class = "navtext"><a onclick="clickKeylogger()">Keylogger</a></li>
+                    <li class = "navtext"><a href="/metadata">Metadata Sniffer</a></li>
+                    <li class = "navtext"><a href="/xss">XSS Attacks</a></li>
+                    <li class = "navtext"><a href="/consent">Consent Bypass</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="textbox">
+            <h1>Consent Bypass</h1>
+            <img src="../static/aurora.jpg" class="aurora"/>
+            <p>
+                Here we will step you through how to bypass the consent requirement to access all our web pages. Inspect Element is a
+                very powerful tool as it allows you to view the client-side frontend code as well as cookies and so much more. Let's
+                open up incognito or grab a new device where you haven't already consented to get started!
+                <br><br>
+            </p>
+            <h2>Viewing Frontend Code</h2>
+            <p>
+                We'll start by opening Inspect Element by either right clicking and opening "Inspect" or using "Ctrl+Shift+I". You should
+                be greated with the HTML code for the home web page! Let's expand the script tags that you see to peer into the JavaScript
+                code.
+                <br><br>
+            </p>
+            <img src="../static/dadwasdw.PNG" class="xss"/>
+            <p>
+                After looking at it, it seems we have functions for creating and reading cookies with a bunch of others to access different
+                pages! All of which interestingly check if a cookie with the name "consent" and value "true" exist before accessing them.
+                <br><br>
+            </p>
+            <h2>Creating our Cookie</h2>
+            <p>
+                Now that we know the website checks if you consented via cookies, let's create our own! Navigating to the "Storage" section
+                and clicking on "Cookies" we should see an empty section that says "No data present for selected host". This is because the
+                website hasn't created any cookies for us yet. Let's do that on our own! Click the plus icon at the top right which will
+                create a new cookie. Change its name to "consent" and value to "true" and refresh the web page.
+            </p>
+            <img src="../static/jytfewhtr.PNG" class="xss"/>
+            <p>
+                And just like that we're in! But that was almost too easy, how do other websites protect themselves from attacks like these?
+                Most cookies that we deem important are not stored on the client-side HTML but in the backend server which isn't accessible
+                via Inspect Element. On top of this cookies don't have easily guessable names like "consent=true" but rather a large hashed
+                string that is near impossible to guess or brute force!
+                <br><br>
+            </p>
+        </div>
+
+        <script>
+            function clickKeylogger() {
+                if (window.innerWidth <= 428) {
+                    alert("The keylogger isn't accessible on phone!");
+                } else {
+                    window.location.href = "/keylogger";
+                }
+            }
+        </script>
+    </body>
+</html>

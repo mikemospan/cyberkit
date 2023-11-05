@@ -12,6 +12,8 @@
                     <li class = "navtext"><a href="/">Home</a></li>
                     <li class = "navtext"><a href="/keylogger">Keylogger</a></li>
                     <li class = "navtext"><a href="/metadata">Metadata Sniffer</a></li>
+                    <li class = "navtext"><a href="/xss">XSS Attacks</a></li>
+                    <li class = "navtext"><a href="/consent">Consent Bypass</a></li>
                 </ul>
             </div>
         </div>
@@ -40,10 +42,11 @@
             </p>
             <h2>Other types of keyloggers!</h2>
             <p>
-                Online keyloggers like this one which log your key strokes whenever you visit the website are far from the only types
-                of keyloggers. Other downloadable types of keyloggers are arguably far more malicious. This is because many keyloggers
-                have rootkit functionality, where the rootkit (such as this one) deliberately hides the application, making it almost
-                impossible to detect! Below is a GitHub link to a simple keylogger coded up as a part of this project.
+                Modern browsers prevent online keyloggers like this one from being able to capture input of any application other than
+                the website on which the keylogger is hosted. Downloadable keylogger applications are arguably far more malicious because
+                they can capture your key strokes absolutely anywhere. Furthermore, many keyloggers have rootkit functionality, where the
+                rootkit deliberately hides the application, making it almost impossible to detect! Below is a GitHub link to a simple
+                keylogger coded up as a part of this project.
             </p>
             <p style="text-align: center;"><a href="https://github.com/mikemospan/keylogger">Keylogger GitHub Repository</a></p>
         </div>
@@ -52,7 +55,7 @@
             const startButton = document.getElementById('startButton');
             const stopButton = document.getElementById('stopButton');
             const log = document.getElementById('keylog');
-            let logText = '';
+            let logText = "";
             let isLogging = false;
 
             function startLog() {
@@ -65,15 +68,17 @@
                 log.innerHTML = 'Logging stopped.';
                 isLogging = false;
             }
-    
+
             document.addEventListener('keydown', function (event) {
                 if (isLogging) {
                     const key = event.key;
-                    logText += key;
-                    log.innerHTML = logText;
+                    if (key !== "Shift") {
+                        logText += key;
+                        log.innerHTML = logText;
 
-                    const logbox = document.getElementById('logbox');
-                    logbox.scrollTop = logbox.scrollHeight - logbox.clientHeight;
+                        const logbox = document.getElementById('logbox');
+                        logbox.scrollTop = logbox.scrollHeight - logbox.clientHeight;
+                    }
                 }
             });
         </script>

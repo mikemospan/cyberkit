@@ -3,14 +3,6 @@
     padding: 0;
 }
 
-.banner {
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(background.jpg);
-    background-size: cover;
-    background-position: center;
-}
-
 @font-face {
     font-family: 'Lato-Bold';
     src: url(Lato/Lato-Bold.ttf) format('truetype');
@@ -34,7 +26,7 @@
 .navbar {
     width: 80%;
     margin: auto;
-    padding: 35px 0;
+    padding: 4vh 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -47,7 +39,7 @@
 }
 
 .logo {
-    width: 120px;
+    width: 13vh;
     font-family: 'Cyber';
     color: #e49400;
     font-size: 112px;
@@ -56,7 +48,7 @@
 .navbar ul li {
     list-style: none;
     display: inline-block;
-    margin: 0 20px;
+    margin: 0 2.1vh;
     position: relative;
 }
 
@@ -64,16 +56,17 @@
     text-decoration: none;
     color: #fff;
     text-transform: uppercase;
+    height: auto;
 }
 
 .navbar ul li::after {
     content: '';
-    height: 3px;
+    height: 0.3vh;
     width: 0;
     background: #e27900;
     position: absolute;
     left: 0;
-    bottom: -10px;
+    bottom: -1vh;
     transition: 0.5s;
 }
 
@@ -82,16 +75,16 @@
 }
 
 .textbox {
-    width: 1200px;
-    height: 700px;
-    background: rgba(10, 10, 10, 0.8); 
+    width: 120vh;
+    height: 75vh;
+    background: rgba(10, 10, 10, 0.8);
     display: flex;
     position: absolute;
     transform: translate(-50%, -50%);
     top: 58%;
     left: 50%;
     color: white;
-    border-radius: 15px;
+    border-radius: 1.6vh;
     flex-direction: column;
 }
 
@@ -99,22 +92,22 @@
     text-align: center;
     font-family: 'Source Sans Pro Semibold';
     font-size: 38px;
-    margin-top: 15px;
-    margin-bottom: 20px;
+    margin-top: 1.6vh;
+    margin-bottom: 2.1vh;
+    height: auto;
 }
 
 .textbox p {
     font-family: 'Source Sans Pro';
-    margin-left: 55px;
-    margin-right: 55px;
-    margin-top: 15px;
+    margin-left: 5.9vh;
+    margin-right: 5.9vh;
+    margin-top: 1.6vh;
     font-size: 18px;
 }
 
 .sunset {
     width: 90%;
-    height: 20vh;
-    background-image: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)),url(very-bright-orange-sunset-with-streaky-clouds\(3\).png);
+    height: 16vh;
     transform: translate(5%, 0%);
     background-size: cover;
     background-position: center;
@@ -129,24 +122,106 @@ a {
 }
 
 input[type=checkbox] {
-    margin-left: 25px;
+    margin-left: 2.7vh;
     -ms-transform: scale(1.15);
     -moz-transform: scale(1.15);
     -webkit-transform: scale(1.15);
     -o-transform: scale(1.15);
     transform: scale(1.15);
-    padding: 1px;
+    padding: 0.1vh;
 }
 
-input[type=button] {
-    margin-top: 10px;
-    margin-left: 55px;
+input[type=submit] {
+    margin-top: 1vh;
+    margin-left: 5.9vh;
 }
 
 .counter {
     font-family: 'Source Sans Pro';
-    margin-left: 55px;
-    margin-right: 55px;
-    margin-top: 5px;
+    margin-left: 5.9vh;
+    margin-right: 5.9vh;
+    margin-top: 1.6vh;
     font-size: 18px;
+}
+
+@media (max-width: 1300px) {
+    .logo {
+        width: 11vh;
+        font-size: 86px;
+    }
+
+    .navbar {
+        width: 90%;
+        padding: 2vh 0;
+    }
+
+    .navbar ul li {
+        margin: 0 1vh;
+    }
+
+    .navtext {
+        font-size: 20px;
+    }
+
+    .textbox {
+        width: 140vh;
+    }
+}
+
+@media (max-width: 428px) {
+    .logo {
+        width: 8vh;
+        font-size: 64px;
+        display: block;
+        transform: translate(70%, 0%);
+    }
+
+    .banner {
+        height: 205vh;
+    }
+
+    .navbar {
+        width: 50vh;
+        margin: auto;
+        padding: 2.7vh 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navbar ul li {
+        margin: 0 0.5vh;
+        transform: translate(0%, 250%);
+        left: -13%;
+    }
+
+    .navtext {
+        font-size: 18px;
+    }
+
+    .textbox {
+        width: 50vh;
+        height: 132vh;
+        transform: translate(-50%, -50%);
+        top: 96%;
+        left: 50%;
+        border-radius: 1.6vh;
+        margin-bottom: 5vh;
+        margin-top: 1vh;
+    }
+
+    .textbox p {
+        margin-left: 2vh;
+        margin-right: 2vh;
+        margin-top: 1.6vh;
+    }
+
+    .sunset {
+        width: 90%;
+        height: 8vh;
+    }
+
+    .navbar ul li:hover::after {
+        width: 0%;
+    }
 }

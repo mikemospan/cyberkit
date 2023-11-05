@@ -43,6 +43,7 @@
 .navtext {
     font-family: 'Lato-Bold';
     font-size: 22px;
+    cursor: pointer;
 }
 
 .logo {
@@ -83,7 +84,7 @@
 .textbox {
     width: 1800px;
     height: 710px;
-    background: rgba(10, 10, 10, 0.8); 
+    background: rgba(10, 10, 10, 0.8);
     display: flex;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -143,4 +144,147 @@
 
 .body {
     background-color: rgb(235, 160, 0);
+}
+
+@media (max-width: 1300px) {
+    .logo {
+        width: 11vh;
+        font-size: 86px;
+    }
+
+    .navbar {
+        width: 90%;
+        padding: 2vh 0;
+    }
+
+    .navbar ul li {
+        margin: 0 1vh;
+    }
+
+    .navtext {
+        font-size: 20px;
+    }
+
+    .textbox {
+        width: 220vh;
+        height: 75vh;
+        background: rgba(10, 10, 10, 0.8);
+        display: flex;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 58%;
+        left: 50%;
+        color: white;
+        border-radius: 1.6vh;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 428px) {
+    .logo {
+        width: 8vh;
+        font-size: 64px;
+        display: block;
+        transform: translate(70%, 0%);
+    }
+
+    .banner {
+        height: 205vh;
+    }
+
+    .navbar {
+        width: 50vh;
+        margin: auto;
+        padding: 2.7vh 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navbar ul li {
+        margin: 0 0.5vh;
+        transform: translate(0%, 250%);
+        left: -13%;
+    }
+
+    .navtext {
+        font-size: 18px;
+    }
+
+    .textbox {
+        width: 50vh;
+        height: 132vh;
+        transform: translate(-50%, -50%);
+        top: 96%;
+        left: 50%;
+        border-radius: 1.6vh;
+        margin-bottom: 5vh;
+        margin-top: 1vh;
+    }
+
+    .textbox p {
+        margin-left: 2vh;
+        margin-right: 2vh;
+        margin-top: 1.6vh;
+    }
+
+    .navbar ul li:hover::after {
+        width: 0%;
+    }
+
+    .textbox table {
+        margin-left: 2vh;
+        margin-right: 2vh;
+        margin-bottom: 1.6vh;
+        font-size: 18px;
+    }
+
+    th {
+        display: none;
+    }
+
+    td {
+        display: block;
+    }
+
+    td::before {
+        font-weight: 700;
+        display: block;
+    }
+
+    td:nth-of-type(1)::before {
+        content: "Browser";
+    }
+
+    td:nth-of-type(2)::before {
+        content: "Operating System";
+    }
+
+    td:nth-of-type(3)::before {
+        content: "Language";
+    }
+
+    td:nth-of-type(4)::before {
+        content: "Timezone Location";
+    }
+
+    td:nth-of-type(5)::before {
+        content: "Referrer";
+    }
+
+    td:nth-of-type(6)::before {
+        content: "Cookies";
+    }
+
+    td:nth-of-type(7)::before {
+        content: "Host Name";
+    }
+
+    td:nth-of-type(8)::before {
+        content: "Host Public IP Address";
+    }
+
+    td:nth-of-type(9)::before {
+        content: "Client Public IP Address";
+    }
 }
